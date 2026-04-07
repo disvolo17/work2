@@ -4,201 +4,287 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Денис Волошин | Project Manager & PR</title>
+    
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: "#0a0804",
+                        foreground: "#f5f5f5",
+                        primary: "#f59e0b",
+                        border: "rgba(255,255,255,0.1)",
+                        card: "rgba(255,255,255,0.03)",
+                    },
+                    animation: {
+                        marquee: 'marquee 40s linear infinite',
+                    },
+                    keyframes: {
+                        marquee: {
+                            '0%': { transform: 'translateX(0%)' },
+                            '100%': { transform: 'translateX(-50%)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
-        body { font-family: 'Inter', sans-serif; background-color: #0a0804; color: #f5f5f5; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
-        
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
-        .animate-marquee { display: flex; width: max-content; animation: marquee 40s linear infinite; }
-        
-        .fade-in { animation: fadeIn 1.2s ease-out forwards; opacity: 0; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        
-        .text-outline { -webkit-text-stroke: 1px #f5f5f5; color: transparent; }
-        
+        body { font-family: 'Inter', sans-serif; background: #0a0804; color: #f5f5f5; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
+        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
         ::-webkit-scrollbar { width: 4px; }
         ::-webkit-scrollbar-track { background: #0a0804; }
         ::-webkit-scrollbar-thumb { background: #f59e0b; }
+        .text-outline { -webkit-text-stroke: 1px #f5f5f5; color: transparent; }
     </style>
 </head>
 <body>
+    <div id="root"></div>
 
-    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/10">
-        <div class="font-mono text-lg md:text-xl tracking-[0.3em] uppercase font-black">Денис Волошин</div>
-        <div class="hidden md:flex gap-10 font-mono text-sm uppercase tracking-widest text-gray-400">
-            <a href="#skills" class="hover:text-orange-500 transition-colors">Навыки</a>
-            <a href="#experience" class="hover:text-orange-500 transition-colors">Опыт</a>
-            <a href="#education" class="hover:text-orange-500 transition-colors">База</a>
-            <a href="https://t.me/disvolo" class="text-orange-500 font-bold hover:text-white transition-colors">Telegram</a>
-        </div>
-    </nav>
+    <script type="text/babel">
+        const { useEffect, useState } = React;
+        const { motion } = FramerMotion;
 
-    <section class="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-20 overflow-hidden">
-        <div class="absolute inset-0 z-0">
-            <img 
-                src="https://media.base44.com/images/public/69d3f72b14a1404fda01934e/4358e7988_Airbrush-IMAGE-ENHANCER-1775521875923-1775521875923.png" 
-                class="absolute left-0 top-0 h-full w-full object-cover object-left md:w-2/3 brightness-110" 
-                style="mask-image: linear-gradient(to right, black 30%, transparent 95%); -webkit-mask-image: linear-gradient(to right, black 30%, transparent 95%);"
-            >
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0804] via-transparent to-transparent opacity-80"></div>
-        </div>
-        
-        <div class="relative z-10 fade-in">
-            <p class="text-orange-500 font-mono text-xs mb-6 uppercase tracking-[0.5em] font-semibold">Tour & PR Management / Project Manager</p>
-            <h1 class="text-6xl md:text-[10rem] font-black uppercase leading-[0.85] mb-12">
-                Денис<br><span class="text-outline">Волошин</span>
-            </h1>
-            
-            <div class="flex flex-wrap gap-12 border-t border-white/10 pt-10">
+        // --- ДАННЫЕ (Восстановлены ПОЛНОСТЬЮ все пункты) ---
+        const PHOTO_URL = 'https://media.base44.com/images/public/69d3f72b14a1404fda01934e/4358e7988_Airbrush-IMAGE-ENHANCER-1775521875923-1775521875923.png';
+        const NAME_CHARS_1 = 'ДЕНИС'.split('');
+        const NAME_CHARS_2 = 'ВОЛОШИН'.split('');
+
+        const NAV_ITEMS = [
+            { label: 'Навыки', href: '#skills' },
+            { label: 'Опыт', href: '#experience' },
+            { label: 'База', href: '#education' },
+            { label: 'Контакт', href: '#contact' },
+        ];
+
+        const CONTACTS_NAV = [
+            { label: 'TG', href: 'https://t.me/disvolo', title: 'Telegram' },
+            { label: 'VK', href: 'https://vk.com/disvolo', title: 'VKontakte' },
+            { label: '✉', href: 'mailto:disvolo@bk.ru', title: 'Email' },
+        ];
+
+        const ARTISTS = ['БАСТА', 'ЗВЕРИ', 'MACAN', 'ЕГОР КРИД', 'ПОЛИНА ГАГАРИНА', 'SALUKI', 'BASHARTH'];
+
+        const SKILLS_CATEGORIES = [
+            {
+                name: "Прожект менеджмент",
+                items: [
+                    { title: 'Планирование', desc: 'Разбивка проекта на этапы, управление ресурсами и жесткий контроль дедлайнов (WBS).' },
+                    { title: 'Коммуникация', desc: 'Синхронизация команды, подрядчиков и стейкхолдеров. Управление ожиданиями.' },
+                    { title: 'Crisis Management', desc: 'Мгновенная реакция на форс-мажоры: отмены рейсов, технические сбои.' },
+                    { title: 'Методологии', desc: 'Гибкое применение Agile (Scrum/Kanban) в зависимости от масштаба проекта.' }
+                ]
+            },
+            {
+                name: "PR & PR-Менеджмент",
+                items: [
+                    { title: 'PR-Стратегия', desc: 'Построение имиджа артистов/брендов и работа над репутацией.' },
+                    { title: 'Media Relations', desc: 'Связи со СМИ, подготовка пресс-материалов, организация интервью.' },
+                    { title: 'Event-PR', desc: 'PR-сопровождение концертов, релизов и крупных медийных событий.' },
+                    { title: 'Инструменты PR', desc: 'Мониторинг, аналитика эффективности и работа с инфлюенсерами.' }
+                ]
+            },
+            {
+                name: "Тех. Продакшн & Логистика",
+                items: [
+                    { title: 'Technical Rider', desc: 'Понимание специфики звукового, светового и видеооборудования площадок.' },
+                    { title: 'Логистика туров', desc: 'Организация сложных маршрутов, чартеров и проживания для команд 50+ человек.' },
+                    { title: 'Бюджетирование', desc: 'Управление P&L проекта, оптимизация расходов и отчетность.' },
+                    { title: 'Crisis Logist', desc: 'Решение логистических форс-мажоров: отмены, задержки.' }
+                ]
+            }
+        ];
+
+        const TOOLS = ['Bitrix24', 'Trello', 'Jira', 'Notion', 'Asana', 'ClickUp', 'MS Project', 'Slack', 'ChatGPT / Gemini', 'Figma', 'Scrum / Kanban', 'WBS / Декомпозиция', 'OKR / KPI', 'RACI-матрица', 'P&L Management'];
+
+        const EXPERIENCE = [
+            {
+                period: '2024 — 2025', company: 'SOLDOUT',
+                items: [
+                    'Полное управление гастрольными турами артистов первого эшелона в 36+ городах России.',
+                    'Координация работы команды сопровождения (30+ человек) и локальных организаторов.',
+                    'Управление бюджетом проекта, согласование смет и финальные взаиморасчеты.',
+                    'Контроль технического и бытового райдера на всех площадках тура.',
+                ],
+            },
+            {
+                period: '2024', company: 'MTS LIVE',
+                items: [
+                    'Координация масштабных концертных мероприятий в рамках экосистемы МТС.',
+                    'Взаимодействие с артистами и техническими подрядчиками.',
+                    'Контроль застройки сцены и технического продакшна.',
+                ],
+            },
+            {
+                period: '2023 — 2024', company: 'NEBO RECORDS',
+                items: [
+                    'Организация концертов и корпоративных выступлений ключевых артистов лейбла.',
+                    'Контроль VIP-логистики и рекламных контрактов артистов.',
+                    'Работа со звуковым и световым оборудованием на площадках.',
+                ],
+            },
+        ];
+
+        const EDUCATION = [
+            { period: '2017 — 2021', title: 'РЭУ Плеханова', subtitle: 'Гостиничное дело / Высшее' },
+            { period: '2021 — 2022', title: 'Военная служба', badge: 'Медаль за парад 2022' },
+        ];
+
+        // --- КОМПОНЕНТЫ ---
+
+        function Nav() {
+            return (
+                <nav className="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-background/50 backdrop-blur-md border-b border-border">
+                    <div className="font-mono text-xs tracking-[0.3em] uppercase font-black">Денис Волошин</div>
+                    <div className="hidden md:flex gap-10 font-mono text-[10px] uppercase tracking-widest text-gray-400">
+                        {NAV_ITEMS.map(item => <a key={item.label} href={item.href} class="hover:text-primary transition-colors">{item.label}</a>)}
+                        <div className="w-px h-3.5 bg-border mx-2" />
+                        {CONTACTS_NAV.map(item => <a key={item.label} href={item.href} target="_blank" class="hover:text-primary transition-colors text-gray-600">{item.label}</a>)}
+                    </div>
+                </nav>
+            );
+        }
+
+        function Hero() {
+            return (
+                <section className="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-20 overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                        <img src={PHOTO_URL} className="absolute left-0 top-0 h-full w-full md:w-1/2 object-cover object-left md:left-20" style={{maskImage: 'linear-gradient(to right, black 25%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to right, black 25%, transparent 100%)'}} alt="Denis Voloshin" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                    </div>
+                    
+                    <div className="relative z-10 fade-in text-left">
+                        <motion.p initial={{opacity:0}} animate={{opacity:1}} className="font-mono text-primary text-xs tracking-widest uppercase mb-4">Tour & PR Management</motion.p>
+                        <h1 className="font-display text-6xl md:text-[10rem] font-black uppercase leading-[0.85] mb-12">
+                            <div className="flex flex-wrap">
+                                {NAME_CHARS_1.map((c, i) => <motion.span key={i} initial={{y:50, opacity:0}} animate={{y:0, opacity:1}} transition={{delay: i*0.1}} className="inline-block">{c}</motion.span>)}
+                            </div>
+                            <div className="flex flex-wrap text-transparent" style={{ WebkitTextStroke: '1px #f5f5f5' }}>
+                                {NAME_CHARS_2.map((c, i) => <motion.span key={i} initial={{y:50, opacity:0}} animate={{y:0, opacity:1}} transition={{delay: 0.5 + i*0.1}} className="inline-block">{c}</motion.span>)}
+                            </div>
+                        </h1>
+                        <div className="flex gap-12 border-t border-border pt-10">
+                            <div><div className="text-4xl font-bold italic">100+</div><div className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Концертов</div></div>
+                            <div><div className="text-4xl font-bold italic">36+</div><div className="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Городов России</div></div>
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        function Marquee() {
+            return (
+                <div className="py-12 border-y border-border overflow-hidden bg-card">
+                    <div className="flex animate-marquee whitespace-nowrap">
+                        {[...ARTISTS, ...ARTISTS].map((a, i) => <span key={i} className="text-4xl md:text-6xl font-black mx-12 opacity-20 hover:opacity-100 transition-opacity cursor-default">{a}</span>)}
+                    </div>
+                </div>
+            );
+        }
+
+        function Skills() {
+            return (
+                <section id="skills" className="py-24 md:py-32 px-6 md:px-20 bg-[#0d0b07]">
+                    <div className="mb-16 flex items-center gap-4"><span className="font-mono text-primary text-xs tracking-widest">// 01 //</span><h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">Навыки</h2></div>
+                    <div className="space-y-16">
+                        {SKILLS_CATEGORIES.map(cat => (
+                            <div key={cat.name}>
+                                <h3 className="font-mono text-[11px] text-gray-500 uppercase tracking-[0.4em] mb-10">{cat.name}</h3>
+                                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-border border border-border">
+                                    {cat.items.map(s => (
+                                        <div key={s.title} className="bg-background p-8 md:p-10 hover:bg-card transition-colors">
+                                            <h3 className="text-xl font-bold mb-4 uppercase text-primary tracking-wider">{s.title}</h3>
+                                            <p className="text-sm text-gray-400 leading-relaxed font-mono">{s.desc}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="mt-20">
+                        <h4 className="font-mono text-[10px] text-gray-600 uppercase tracking-[0.4em] mb-10">Стек Технологий / Инструменты</h4>
+                        <div className="flex flex-wrap gap-3">
+                            {TOOLS.map(t => <span key={t} className="px-3 py-1.5 border border-border font-mono text-[10px] uppercase text-gray-500 hover:border-primary hover:text-primary transition-colors">{t}</span>)}
+                        </div>
+                    </div>
+                </section>
+            );
+        }
+
+        function Experience() {
+            return (
+                <section id="experience" className="py-24 md:py-32 px-6 md:px-20 bg-background">
+                    <div className="mb-16 flex items-center gap-4"><span className="font-mono text-primary text-xs tracking-widest">// 02 //</span><h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">Опыт работы</h2></div>
+                    {EXPERIENCE.map((exp, i) => (
+                        <div key={exp.company} className="border-t border-border py-12 md:py-16 grid md:grid-cols-4 gap-4">
+                            <div className="font-mono text-gray-500 text-sm">{exp.period}</div>
+                            <div className="md:col-span-3">
+                                <h3 className="text-3xl md:text-5xl font-black mb-8 uppercase hover:text-primary transition-colors">{exp.company}</h3>
+                                <ul className="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed font-mono">
+                                    {exp.items.map(item => <li key={item} className="flex gap-4 items-start"><span className="text-primary mt-1">/</span> {item}</li>)}
+                                </ul>
+                            </div>
+                        </div>
+                    ))}
+                </section>
+            );
+        }
+
+        function Education() {
+            return (
+                <section id="education" className="py-24 md:py-32 px-6 md:px-20 bg-card/30">
+                    <div className="mb-16 flex items-center gap-4"><span className="font-mono text-primary text-xs tracking-widest">// 03 //</span><h2 className="text-4xl md:text-6xl font-black uppercase tracking-tight">База</h2></div>
+                    <div className="space-y-12">
+                        {EDUCATION.map(edu => (
+                            <div key={edu.title} className="flex flex-col md:flex-row gap-6 md:items-center justify-between border-b border-border pb-10">
+                                <div><h3 className="text-3xl font-bold uppercase">{edu.title}</h3><p className="text-gray-500 font-mono text-sm mt-1">{edu.subtitle}</p></div>
+                                <div className="flex gap-4 items-center">
+                                    <span className="font-mono text-gray-700 text-sm">{edu.period}</span>
+                                    {edu.badge && <span className="px-4 py-2 bg-primary text-black font-mono text-[10px] font-bold uppercase tracking-widest">{edu.badge}</span>}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </section>
+            );
+        }
+
+        function Footer() {
+            return (
+                <footer id="contact" className="py-24 md:py-32 px-6 md:px-20 border-t border-border text-center bg-background">
+                    <h2 className="text-6xl md:text-[10rem] font-black uppercase mb-16 leading-none relative">Давайте <br> <span className="text-primary italic">шуметь</span></h2>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto font-mono text-xs uppercase tracking-widest text-gray-300">
+                        {CONTACTS_NAV.map(c => <a key={c.label} href={c.href} target="_blank" className="bg-white/5 p-8 border border-white/10 hover:border-primary hover:text-primary transition-all">{c.title}</a>)}
+                        <a href="mailto:disvolo@bk.ru" className="bg-white/5 p-8 border border-white/10 hover:border-primary hover:text-primary transition-all col-span-2 md:col-span-1">Email</a>
+                    </div>
+                    <p className="mt-20 text-[10px] text-muted-foreground tracking-widest uppercase opacity-40">© 2026 DENIS VOLOSHIN</p>
+                </footer>
+            );
+        }
+
+        function App() {
+            return (
                 <div>
-                    <div class="text-5xl font-bold italic text-white">100+</div>
-                    <div class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-2 font-mono">Концертов</div>
+                    <Nav />
+                    <Hero />
+                    <Marquee />
+                    <Skills />
+                    <Experience />
+                    <Education />
+                    <Footer />
                 </div>
-                <div>
-                    <div class="text-5xl font-bold italic text-white">36+</div>
-                    <div class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-2 font-mono">Городов России</div>
-                </div>
-            </div>
-        </div>
-    </section>
+            );
+        }
 
-    <div class="py-14 border-y border-white/10 overflow-hidden bg-white/5 relative z-10">
-        <div class="animate-marquee">
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">БАСТА</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЗВЕРИ</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">MACAN</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЕГОР КРИД</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ПОЛИНА ГАГАРИНА</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">SALUKI</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">БАСТА</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЗВЕРИ</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">MACAN</span>
-            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЕГОР КРИД</span>
-        </div>
-    </div>
-
-    <section id="skills" class="py-32 px-6 md:px-20 bg-[#0d0b07]">
-        <div class="mb-20 flex items-center gap-4">
-            <span class="font-mono text-orange-500 text-xs tracking-widest">01 //</span>
-            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Навыки</h2>
-        </div>
-        <div class="grid md:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Планирование</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Декомпозиция проектов, управление ресурсами и жесткий контроль дедлайнов (WBS).</p>
-            </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Коммуникация</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Синхронизация команд, подрядчиков и стейкхолдеров. Управление ожиданиями.</p>
-            </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Crisis Management</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Работа в условиях неопределенности и быстрое решение форс-мажоров.</p>
-            </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Логистика туров</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Организация перемещений и проживания для групп 50+ человек в турах по РФ.</p>
-            </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Тех. Продакшн</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Контроль технического райдера, работа со звуковым и световым оборудованием.</p>
-            </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Бюджетирование</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Управление P&L проекта, оптимизация затрат и финансовая отчетность.</p>
-            </div>
-        </div>
-        <div class="mt-16 flex flex-wrap gap-3 font-mono text-[10px] uppercase">
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Bitrix24</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Jira</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Notion</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Asana</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Trello</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Scrum / Kanban</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Figma</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">ChatGPT / Gemini</span>
-        </div>
-    </section>
-
-    <section id="experience" class="py-32 px-6 md:px-20">
-        <div class="mb-20 flex items-center gap-4">
-            <span class="font-mono text-orange-500 text-xs tracking-widest">02 //</span>
-            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Опыт работы</h2>
-        </div>
-        
-        <div class="space-y-0">
-            <div class="grid md:grid-cols-4 gap-10 border-t border-white/10 py-16 group">
-                <div class="font-mono text-xs text-gray-500 uppercase tracking-widest">2024 — 2025</div>
-                <div class="md:col-span-3">
-                    <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">SOLDOUT</h3>
-                    <ul class="space-y-4 text-gray-400 font-mono text-sm leading-relaxed">
-                        <li>/ Управление гастрольными турами артистов первого эшелона (36+ городов).</li>
-                        <li>/ Координация туровой команды и взаимодействие с локальными промоутерами.</li>
-                        <li>/ Ведение финансовой документации и контроль исполнения смет.</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="grid md:grid-cols-4 gap-10 border-t border-white/10 py-16 group">
-                <div class="font-mono text-xs text-gray-500 uppercase tracking-widest">2024</div>
-                <div class="md:col-span-3">
-                    <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">MTS LIVE</h3>
-                    <ul class="space-y-4 text-gray-400 font-mono text-sm leading-relaxed">
-                        <li>/ Координация крупных концертных и корпоративных ивентов.</li>
-                        <li>/ Работа с техническими подрядчиками и контроль монтажа сцены.</li>
-                        <li>/ Операционное управление персоналом на площадке.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-10 border-t border-white/10 py-16 group">
-                <div class="font-mono text-xs text-gray-500 uppercase tracking-widest">2023 — 2024</div>
-                <div class="md:col-span-3">
-                    <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">NEBO RECORDS</h3>
-                    <ul class="space-y-4 text-gray-400 font-mono text-sm leading-relaxed">
-                        <li>/ Организация выступлений артистов лейбла (Баста, Zivert и др).</li>
-                        <li>/ Контроль VIP-логистики, чартеров и бытовых условий команды.</li>
-                        <li>/ Работа с рекламными интеграциями в рамках туров.</li>
-                        <li>/ Сопровождение артистов на медиа-площадках и съемках.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="education" class="py-32 px-6 md:px-20 bg-white/5">
-        <div class="mb-20 flex items-center gap-4">
-            <span class="font-mono text-orange-500 text-xs tracking-widest">03 //</span>
-            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">База</h2>
-        </div>
-        <div class="space-y-12">
-            <div class="flex flex-col md:flex-row gap-6 justify-between border-b border-white/10 pb-10">
-                <div>
-                    <h3 class="text-2xl font-bold uppercase">РЭУ Плеханова</h3>
-                    <p class="text-gray-500 font-mono text-sm mt-1">Гостиничное дело / 2017 — 2021</p>
-                </div>
-                <span class="text-orange-500 font-mono text-xs uppercase border border-orange-500/30 px-4 py-2 h-fit">Высшее</span>
-            </div>
-            <div class="flex flex-col md:flex-row gap-6 justify-between border-b border-white/10 pb-10">
-                <div>
-                    <h3 class="text-2xl font-bold uppercase">Военная служба</h3>
-                    <p class="text-gray-500 font-mono text-sm mt-1">Медаль за парад 2022 / 2021 — 2022</p>
-                </div>
-                <span class="bg-orange-500 text-black font-mono text-[10px] font-bold uppercase px-4 py-2 h-fit">Награда</span>
-            </div>
-        </div>
-    </section>
-
-    <footer id="contact" class="py-40 px-6 md:px-20 border-t border-white/10 text-center">
-        <h2 class="text-6xl md:text-[9rem] font-black uppercase mb-16 leading-none">Давайте <span class="text-orange-500 italic">шуметь</span></h2>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto font-mono text-xs tracking-widest uppercase">
-            <a href="https://t.me/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all">Telegram</a>
-            <a href="https://vk.com/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all">VKontakte</a>
-            <a href="mailto:disvolo@bk.ru" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all col-span-2 md:col-span-1">Email</a>
-        </div>
-        <div class="mt-40 opacity-20 font-mono text-[10px] uppercase">© 2026 DENIS VOLOSHIN — Based in Moscow</div>
-    </footer>
-
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
