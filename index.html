@@ -3,133 +3,236 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Денис Волошин | Portfolio</title>
+    <title>Денис Волошин | Project Manager & PR</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #0a0804; color: #f5f5f5; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
         
-        body { 
-            font-family: 'Inter', sans-serif; 
-            background-color: #0a0804; 
-            color: #f5f5f5; 
-            margin: 0; 
-            overflow-x: hidden; 
-        }
-
-        /* Анимация бегущей строки на чистом CSS */
-        @keyframes marquee {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        .animate-marquee {
-            display: flex;
-            width: max-content;
-            animation: marquee 30s linear infinite;
-        }
-
-        /* Плавное появление контента */
-        .fade-in {
-            animation: fadeIn 1.5s ease-out forwards;
-        }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .text-outline {
-            -webkit-text-stroke: 1px #f5f5f5;
-            color: transparent;
-        }
+        /* Анимации */
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { display: flex; width: max-content; animation: marquee 40s linear infinite; }
+        .fade-in { animation: fadeIn 1.2s ease-out forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .text-outline { -webkit-text-stroke: 1px #f5f5f5; color: transparent; }
+        .bg-glass { background: rgba(255, 255, 255, 0.03); backdrop-blur: 10px; }
+        
+        /* Скроллбар */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: #0a0804; }
+        ::-webkit-scrollbar-thumb { background: #f59e0b; }
     </style>
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/50 backdrop-blur-md border-b border-white/10">
-        <div class="font-mono text-[10px] tracking-[0.3em] uppercase">Денис Волошин</div>
-        <a href="https://t.me/disvolo" class="text-[10px] font-mono uppercase tracking-widest text-orange-500 hover:text-white transition-colors">Telegram</a>
+    <nav class="fixed top-0 w-full z-50 p-5 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/10">
+        <div class="font-mono text-[10px] tracking-[0.3em] uppercase font-bold">Денис Волошин</div>
+        <div class="hidden md:flex gap-8 font-mono text-[10px] uppercase tracking-widest text-gray-400">
+            <a href="#skills" class="hover:text-orange-500 transition-colors">Навыки</a>
+            <a href="#experience" class="hover:text-orange-500 transition-colors">Опыт</a>
+            <a href="#education" class="hover:text-orange-500 transition-colors">База</a>
+            <a href="#contact" class="hover:text-orange-500 transition-colors">Контакт</a>
+        </div>
+        <a href="https://t.me/disvolo" class="text-[10px] font-mono uppercase tracking-widest text-orange-500 border border-orange-500/30 px-4 py-2 rounded-sm hover:bg-orange-500 hover:text-black transition-all">TG: @disvolo</a>
     </nav>
 
-    <section class="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-12 overflow-hidden">
+    <section class="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-20 overflow-hidden">
         <div class="absolute inset-0 z-0">
             <img 
                 src="https://media.base44.com/images/public/69d3f72b14a1404fda01934e/4358e7988_Airbrush-IMAGE-ENHANCER-1775521875923-1775521875923.png" 
-                class="absolute right-0 top-0 h-full w-full object-cover md:w-2/3 opacity-40" 
-                style="mask-image: linear-gradient(to left, black 20%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 20%, transparent 100%);"
+                class="absolute right-0 top-0 h-full w-full object-cover md:w-1/2 opacity-50" 
+                style="mask-image: linear-gradient(to left, black 25%, transparent 100%); -webkit-mask-image: linear-gradient(to left, black 25%, transparent 100%);"
             >
             <div class="absolute inset-0 bg-gradient-to-t from-[#0a0804] via-transparent to-transparent"></div>
         </div>
         
         <div class="relative z-10 fade-in">
-            <p class="text-orange-500 font-mono text-xs mb-4 uppercase tracking-[0.4em]">Tour & PR Management</p>
-            <h1 class="text-6xl md:text-[9rem] font-black uppercase leading-[0.8] mb-12">
-                Денис<br>
-                <span class="text-outline">Волошин</span>
+            <p class="text-orange-500 font-mono text-xs mb-6 uppercase tracking-[0.5em] font-semibold">Tour & PR Management / Project Manager</p>
+            <h1 class="text-6xl md:text-[10rem] font-black uppercase leading-[0.85] mb-12">
+                Денис<br><span class="text-outline">Волошин</span>
             </h1>
             
-            <div class="flex gap-12 border-t border-white/10 pt-8 max-w-xl">
+            <div class="flex flex-wrap gap-12 border-t border-white/10 pt-10">
                 <div>
-                    <div class="text-4xl font-bold">36+</div>
-                    <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Городов в турах</div>
+                    <div class="text-5xl font-bold italic">100+</div>
+                    <div class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-2 font-mono">Концертов</div>
                 </div>
                 <div>
-                    <div class="text-4xl font-bold">14</div>
-                    <div class="text-[10px] text-gray-500 uppercase tracking-widest mt-1">Лет в футболе</div>
+                    <div class="text-5xl font-bold italic">36+</div>
+                    <div class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-2 font-mono">Городов России</div>
+                </div>
+                <div>
+                    <div class="text-5xl font-bold italic">14</div>
+                    <div class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-2 font-mono">Лет в проф. футболе</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="py-12 border-y border-white/10 overflow-hidden bg-white/5">
+    <div class="py-14 border-y border-white/10 overflow-hidden bg-white/5 relative z-10">
         <div class="animate-marquee">
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">БАСТА</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЗВЕРИ</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">MACAN</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЕГОР КРИД</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ПОЛИНА ГАГАРИНА</span>
+            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">SALUKI</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">БАСТА</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЗВЕРИ</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">MACAN</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ЕГОР КРИД</span>
             <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">ПОЛИНА ГАГАРИНА</span>
+            <span class="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase tracking-tighter">SALUKI</span>
         </div>
     </div>
 
-    <section class="py-32 px-6 md:px-12">
-        <h2 class="font-mono text-xs text-orange-500 mb-16 uppercase tracking-[0.3em]">// Опыт работы</h2>
-        <div class="space-y-12">
-            <div class="grid md:grid-cols-4 gap-4 border-t border-white/10 pt-12">
-                <div class="font-mono text-xs opacity-40">2024 — 2025</div>
+    <section id="skills" class="py-32 px-6 md:px-20 bg-[#0d0b07]">
+        <div class="mb-20 flex items-center gap-4">
+            <span class="font-mono text-orange-500 text-xs tracking-widest">01 //</span>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Навыки</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
+            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Планирование</h3>
+                <p class="text-sm text-gray-400 leading-relaxed font-mono">Разбивка проекта на этапы, управление ресурсами и жесткий контроль дедлайнов.</p>
+            </div>
+            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Логистика туров</h3>
+                <p class="text-sm text-gray-400 leading-relaxed font-mono">Организация сложных маршрутов, перелетов и проживания для команд 50+ человек.</p>
+            </div>
+            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Crisis Management</h3>
+                <p class="text-sm text-gray-400 leading-relaxed font-mono">Мгновенная реакция на форс-мажоры: отмены рейсов, технические сбои.</p>
+            </div>
+            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Управление бюджетом</h3>
+                <p class="text-sm text-gray-400 leading-relaxed font-mono">Контроль P&L, оптимизация расходов и предотвращение кассовых разрывов.</p>
+            </div>
+            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Technical Rider</h3>
+                <p class="text-sm text-gray-400 leading-relaxed font-mono">Понимание специфики звукового, светового и видеооборудования.</p>
+            </div>
+            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Коммуникация</h3>
+                <p class="text-sm text-gray-400 leading-relaxed font-mono">Синхронизация команды, подрядчиков и заказчика. 80% работы — общение.</p>
+            </div>
+        </div>
+
+        <div class="mt-20">
+            <p class="font-mono text-[10px] text-gray-500 uppercase tracking-[0.4em] mb-10">Стек технологий & Инструменты</p>
+            <div class="flex flex-wrap gap-3">
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">Bitrix24</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">Notion</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">MS Project</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">Figma</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">Scrum / Kanban</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">ChatGPT / Gemini</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">WBS / Декомпозиция</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">P&L Management</span>
+                <span class="px-4 py-2 border border-white/10 font-mono text-[10px] uppercase hover:border-orange-500 transition-colors">Event-Marketing</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience" class="py-32 px-6 md:px-20">
+        <div class="mb-20 flex items-center gap-4">
+            <span class="font-mono text-orange-500 text-xs tracking-widest">02 //</span>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Опыт работы</h2>
+        </div>
+        
+        <div class="space-y-0">
+            <div class="grid md:grid-cols-4 gap-10 border-t border-white/10 py-16 group">
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-widest">2024 — 2025</div>
                 <div class="md:col-span-3">
-                    <h3 class="text-3xl font-bold mb-4 uppercase">SOLDOUT</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-2xl">
-                        Управление гастрольными турами артистов первого эшелона. 
-                        Логистика, технические райдеры и бюджеты в 36+ городах России.
-                    </p>
+                    <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">SOLDOUT</h3>
+                    <ul class="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed font-mono">
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Полное управление гастрольными турами артистов первого эшелона в 36+ городах.</li>
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Координация работы команды сопровождения (30+ человек) и локальных организаторов.</li>
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Контроль соблюдения технического и бытового райдера на всех площадках тура.</li>
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Управление бюджетом проекта, согласование смет и финальные взаиморасчеты.</li>
+                    </ul>
                 </div>
             </div>
-            <div class="grid md:grid-cols-4 gap-4 border-t border-white/10 pt-12">
-                <div class="font-mono text-xs opacity-40">2024</div>
+
+            <div class="grid md:grid-cols-4 gap-10 border-t border-white/10 py-16 group">
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-widest">2024</div>
                 <div class="md:col-span-3">
-                    <h3 class="text-3xl font-bold mb-4 uppercase">MTS LIVE</h3>
-                    <p class="text-gray-400 text-sm leading-relaxed max-w-2xl">
-                        Координация масштабных шоу-программ и федеральных мероприятий. 
-                        Работа с ключевыми подрядчиками индустрии.
-                    </p>
+                    <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">MTS LIVE</h3>
+                    <ul class="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed font-mono">
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Координация масштабных концертных мероприятий в рамках экосистемы МТС.</li>
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Операционное управление event-командой и контроль выполнения задач в сжатые сроки.</li>
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Участие в реализации федеральных шоу-программ с аудиторией 10 000+ человек.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-10 border-t border-white/10 py-16 group">
+                <div class="font-mono text-xs text-gray-500 uppercase tracking-widest">2023 — 2024</div>
+                <div class="md:col-span-3">
+                    <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">NEBO RECORDS</h3>
+                    <ul class="space-y-4 text-gray-400 text-sm md:text-base leading-relaxed font-mono">
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Организация концертов и корпоративных выступлений ключевых артистов лейбла.</li>
+                        <li class="flex gap-4 items-start"><span class="text-orange-500">/</span> Взаимодействие с концертными площадками, техническими службами и кейтерингом.</li>
+                    </ul>
                 </div>
             </div>
         </div>
     </section>
 
-    <footer class="py-32 px-6 md:px-12 border-t border-white/10 text-center">
-        <h2 class="text-5xl md:text-8xl font-black uppercase mb-12">
-            Давайте <span class="text-orange-500 italic">шуметь</span>
-        </h2>
-        <div class="flex flex-wrap justify-center gap-8 font-mono text-xs tracking-widest uppercase">
-            <a href="https://t.me/disvolo" class="hover:text-orange-500 transition-colors">Telegram</a>
-            <a href="https://vk.com/disvolo" class="hover:text-orange-500 transition-colors">VKontakte</a>
-            <a href="mailto:disvolo@bk.ru" class="hover:text-orange-500 transition-colors">Email</a>
+    <section id="education" class="py-32 px-6 md:px-20 bg-white/5">
+        <div class="mb-20 flex items-center gap-4">
+            <span class="font-mono text-orange-500 text-xs tracking-widest">03 //</span>
+            <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">База</h2>
         </div>
-        <div class="mt-32 opacity-20 font-mono text-[10px]">© 2026 DENIS VOLOSHIN</div>
+        <div class="space-y-12">
+            <div class="flex flex-col md:flex-row gap-6 md:items-center justify-between border-b border-white/10 pb-10">
+                <div>
+                    <h3 class="text-2xl font-bold uppercase">РЭУ Плеханова</h3>
+                    <p class="text-gray-500 font-mono text-sm mt-1">Гостиничное дело / 2017 — 2021</p>
+                </div>
+                <span class="text-orange-500 font-mono text-xs uppercase tracking-widest border border-orange-500/30 px-4 py-2">Высшее</span>
+            </div>
+            <div class="flex flex-col md:flex-row gap-6 md:items-center justify-between border-b border-white/10 pb-10">
+                <div>
+                    <h3 class="text-2xl font-bold uppercase">Военная служба</h3>
+                    <p class="text-gray-500 font-mono text-sm mt-1">Медаль за парад 2022 / 2021 — 2022</p>
+                </div>
+                <span class="bg-orange-500 text-black font-mono text-[10px] font-bold uppercase px-4 py-2">Награда</span>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-40 px-6 md:px-20 border-t border-white/10 text-center relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[20vw] font-black opacity-[0.02] pointer-events-none select-none uppercase">CONTACT</div>
+        
+        <h2 class="text-6xl md:text-[9rem] font-black uppercase mb-16 leading-none relative z-10">
+            Давайте <br> <span class="text-orange-500 italic">шуметь</span>
+        </h2>
+        
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto relative z-10">
+            <a href="https://t.me/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all group">
+                <div class="font-mono text-[10px] text-gray-500 uppercase mb-4">Telegram</div>
+                <div class="font-bold text-lg group-hover:text-orange-500 transition-colors">@disvolo</div>
+            </a>
+            <a href="https://vk.com/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all group">
+                <div class="font-mono text-[10px] text-gray-500 uppercase mb-4">VKontakte</div>
+                <div class="font-bold text-lg group-hover:text-orange-500 transition-colors">disvolo</div>
+            </a>
+            <a href="https://instagram.com/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all group">
+                <div class="font-mono text-[10px] text-gray-500 uppercase mb-4">Instagram</div>
+                <div class="font-bold text-lg group-hover:text-orange-500 transition-colors">@disvolo</div>
+            </a>
+            <a href="mailto:disvolo@bk.ru" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all group">
+                <div class="font-mono text-[10px] text-gray-500 uppercase mb-4">Email</div>
+                <div class="font-bold text-lg group-hover:text-orange-500 transition-colors">disvolo@bk.ru</div>
+            </a>
+        </div>
+        
+        <div class="mt-40 flex flex-col md:flex-row justify-between items-center gap-10 opacity-30 font-mono text-[10px] uppercase tracking-widest relative z-10">
+            <span>© 2026 DENIS VOLOSHIN — PORTFOLIO</span>
+            <span>Based in Moscow / Dubai</span>
+        </div>
     </footer>
 
 </body>
