@@ -3,13 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Денис Волошин | Project Manager & PR</title>
+    <title>Денис Волошин | Portfolio</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
+    
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://unpkg.com/framer-motion@10.16.4/dist/framer-motion.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@10.16.4/dist/framer-motion.js"></script>
 
     <script>
         tailwind.config = {
@@ -23,7 +26,7 @@
                         card: "rgba(255,255,255,0.03)",
                     },
                     animation: {
-                        marquee: 'marquee 40s linear infinite',
+                        'marquee': 'marquee 30s linear infinite',
                     },
                     keyframes: {
                         marquee: {
@@ -36,208 +39,124 @@
         }
     </script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap');
         body { font-family: 'Inter', sans-serif; background: #0a0804; color: #f5f5f5; margin: 0; overflow-x: hidden; }
         html { scroll-behavior: smooth; }
-        .font-display { font-family: 'Inter', sans-serif; font-weight: 700; }
-        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: #0a0804; }
-        ::-webkit-scrollbar-thumb { background: #f59e0b; }
+        .font-mono { font-family: monospace; }
     </style>
 </head>
 <body>
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useEffect, useRef, useState } = React;
-        const { motion, AnimatePresence } = FramerMotion;
+        // Берем компоненты из глобальных переменных библиотек
+        const { useState, useEffect, useRef } = React;
+        const { motion, AnimatePresence } = window.Motion; // Важно: в браузере Motion лежит в window.Motion
 
-        // ─── DATA ────────────────────────────────────────────────────────────
+        // --- ДАННЫЕ ---
         const PHOTO_URL = 'https://media.base44.com/images/public/69d3f72b14a1404fda01934e/4358e7988_Airbrush-IMAGE-ENHANCER-1775521875923-1775521875923.png';
-        const NAME_CHARS_1 = 'ДЕНИС'.split('');
-        const NAME_CHARS_2 = 'ВОЛОШИН'.split('');
-
-        const NAV_ITEMS = [
-            { label: 'Навыки', href: '#skills' },
-            { label: 'Опыт', href: '#experience' },
-            { label: 'База', href: '#education' },
-            { label: 'Контакт', href: '#contact' },
-        ];
-
-        const CONTACTS_NAV = [
-            { label: 'TG', href: 'https://t.me/disvolo', title: 'Telegram' },
-            { label: 'VK', href: 'https://vk.com/disvolo', title: 'VKontakte' },
-            { label: '✉', href: 'mailto:disvolo@bk.ru', title: 'Email' },
-        ];
-
         const ARTISTS = ['БАСТА', 'ЗВЕРИ', 'MACAN', 'ЕГОР КРИД', 'ПОЛИНА ГАГАРИНА', 'SALUKI', 'BASHARTH'];
-
-        const SKILLS = [
-            { title: 'Планирование', desc: 'Разбивка проекта на этапы, управление ресурсами и жесткий контроль дедлайнов.' },
-            { title: 'Коммуникация', desc: 'Синхронизация команды, подрядчиков и заказчика. 80% работы — общение.' },
-            { title: 'Управление рисками', desc: 'Вижу «узкие места» заранее и всегда имею рабочий план Б.' },
-            { title: 'Логистика туров', desc: 'Организация сложных маршрутов, перелетов и проживания для команд 50+ человек.' },
-            { title: 'Координация площадок', desc: 'Связка технических служб, администраций и артистов в реальном времени.' },
-            { title: 'Стрессоустойчивость', desc: 'Хладнокровие и быстрое принятие решений в критических ситуациях.' },
-        ];
-
-        const EXPERIENCE = [
-            {
-                period: '2024 — 2025',
-                company: 'SOLDOUT',
-                items: [
-                    'Полное управление гастрольными турами артистов первого эшелона в 36+ городах.',
-                    'Координация работы команды сопровождения (30+ человек) и локальных организаторов.',
-                    'Управление бюджетом проекта и контроль выполнения технического райдера.',
-                ],
-            },
-            {
-                period: '2024',
-                company: 'MTS LIVE',
-                items: [
-                    'Координация масштабных концертных мероприятий в рамках экосистемы МТС.',
-                    'Взаимодействие с артистами и техническими подрядчиками.',
-                ],
-            },
-        ];
-
-        const EDUCATION = [
-            { period: '2017 — 2021', title: 'РЭУ Плеханова', subtitle: 'Гостиничное дело' },
-            { period: '2021 — 2022', title: 'Военная служба', badge: 'МЕДАЛЬ ЗА ПАРАД 2022' },
-        ];
-
-        // ─── COMPONENTS ──────────────────────────────────────────────────────
-
-        function Nav() {
-            const [scrolled, setScrolled] = useState(false);
-            useEffect(() => {
-                const onScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', onScroll);
-                return () => window.removeEventListener('scroll', onScroll);
-            }, []);
-
-            return (
-                <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? 'bg-background/80 backdrop-blur-md border-b border-border py-3' : 'py-6'}`}>
-                    <div className="flex items-center justify-between px-6 md:px-12">
-                        <div className="font-mono text-xs tracking-widest uppercase">Денис Волошин</div>
-                        <div className="hidden md:flex gap-8">
-                            {NAV_ITEMS.map(item => (
-                                <a key={item.label} href={item.href} className="font-mono text-[10px] tracking-tighter uppercase text-muted-foreground hover:text-primary transition-colors">{item.label}</a>
-                            ))}
-                        </div>
-                    </div>
-                </nav>
-            );
-        }
-
-        function Hero() {
-            return (
-                <section className="relative min-h-screen flex flex-col justify-end pb-20 px-6 md:px-12 overflow-hidden">
-                    <div className="absolute inset-0 z-0">
-                        <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
-                        <img src={PHOTO_URL} className="absolute right-0 top-0 h-full w-full object-cover md:w-2/3 opacity-60" style={{maskImage: 'linear-gradient(to left, black, transparent)'}} />
-                    </div>
-                    
-                    <div className="relative z-10">
-                        <motion.p initial={{opacity:0}} animate={{opacity:1}} className="font-mono text-primary text-xs tracking-widest uppercase mb-4">Tour & PR Management</motion.p>
-                        <h1 className="font-display text-6xl md:text-9xl leading-none uppercase">
-                            <div className="flex flex-wrap">
-                                {NAME_CHARS_1.map((c, i) => <motion.span key={i} initial={{y:50, opacity:0}} animate={{y:0, opacity:1}} transition={{delay: i*0.1}} className="inline-block">{c}</motion.span>)}
-                            </div>
-                            <div className="flex flex-wrap text-primary">
-                                {NAME_CHARS_2.map((c, i) => <motion.span key={i} initial={{y:50, opacity:0}} animate={{y:0, opacity:1}} transition={{delay: 0.5 + i*0.1}} className="inline-block">{c}</motion.span>)}
-                            </div>
-                        </h1>
-                        <div className="mt-12 flex gap-12">
-                            <div>
-                                <div className="text-4xl font-bold">36+</div>
-                                <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Городов</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl font-bold">14</div>
-                                <div className="text-[10px] uppercase tracking-widest text-muted-foreground">Лет в футболе</div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-            );
-        }
-
-        function Marquee() {
-            return (
-                <div className="py-12 border-y border-border overflow-hidden bg-card">
-                    <div className="flex animate-marquee whitespace-nowrap">
-                        {[...ARTISTS, ...ARTISTS].map((a, i) => (
-                            <span key={i} className="text-4xl md:text-6xl font-bold mx-8 opacity-20 hover:opacity-100 transition-opacity cursor-default">{a}</span>
-                        ))}
-                    </div>
-                </div>
-            );
-        }
-
-        function Skills() {
-            return (
-                <section id="skills" className="py-24 px-6 md:px-12">
-                    <h2 className="text-xs font-mono text-primary mb-12 uppercase tracking-widest">// Навыки</h2>
-                    <div className="grid md:grid-cols-3 gap-8">
-                        {SKILLS.map((s, i) => (
-                            <div key={i} className="p-8 border border-border hover:border-primary transition-colors">
-                                <h3 className="text-xl font-bold mb-4">{s.title}</h3>
-                                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-                            </div>
-                        ))}
-                    </div>
-                </section>
-            );
-        }
-
-        function Experience() {
-            return (
-                <section id="experience" className="py-24 px-6 md:px-12 bg-card/30">
-                    <h2 className="text-xs font-mono text-primary mb-12 uppercase tracking-widest">// Опыт работы</h2>
-                    {EXPERIENCE.map((exp, i) => (
-                        <div key={i} className="border-t border-border py-12 grid md:grid-cols-4 gap-4">
-                            <div className="text-muted-foreground font-mono text-sm">{exp.period}</div>
-                            <div className="md:col-span-3">
-                                <h3 className="text-3xl font-bold mb-6">{exp.company}</h3>
-                                <ul className="space-y-4">
-                                    {exp.items.map((item, j) => <li key={j} className="text-muted-foreground text-sm flex gap-3"><span className="text-primary">→</span> {item}</li>)}
-                                </ul>
-                            </div>
-                        </div>
-                    ))}
-                </section>
-            );
-        }
-
-        function Footer() {
-            return (
-                <footer id="contact" className="py-24 px-6 md:px-12 border-t border-border text-center">
-                    <h2 className="text-5xl md:text-8xl font-bold mb-12 uppercase">Давайте <span className="text-primary">шуметь</span></h2>
-                    <div className="flex justify-center gap-8">
-                        {CONTACTS_NAV.map(c => (
-                            <a key={c.label} href={c.href} className="text-xl font-mono hover:text-primary transition-colors">{c.label}</a>
-                        ))}
-                    </div>
-                    <p className="mt-20 text-[10px] text-muted-foreground tracking-widest uppercase opacity-50">© 2026 DENIS VOLOSHIN</p>
-                </footer>
-            );
-        }
 
         function App() {
             return (
-                <div>
-                    <Nav />
-                    <Hero />
-                    <Marquee />
-                    <Skills />
-                    <Experience />
-                    <Footer />
+                <div className="min-h-screen bg-background text-foreground">
+                    {/* NAV */}
+                    <nav className="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-background/50 backdrop-blur-md border-b border-border">
+                        <div className="font-mono text-[10px] tracking-[0.3em] uppercase">Денис Волошин</div>
+                        <div className="flex gap-6">
+                            <a href="https://t.me/disvolo" className="text-[10px] font-mono uppercase tracking-widest text-primary">Telegram</a>
+                        </div>
+                    </nav>
+
+                    {/* HERO */}
+                    <section className="relative min-h-screen flex flex-col justify-end pb-24 px-6 md:px-12 overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            <img 
+                                src={PHOTO_URL} 
+                                className="absolute right-0 top-0 h-full w-full object-cover md:w-2/3 opacity-50" 
+                                style={{ maskImage: 'linear-gradient(to left, black 20%, transparent 100%)', WebkitMaskImage: 'linear-gradient(to left, black 20%, transparent 100%)' }}
+                                alt="Denis Voloshin"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent" />
+                        </div>
+                        
+                        <motion.div 
+                            initial={{ opacity: 0, y: 30 }} 
+                            animate={{ opacity: 1, y: 0 }}
+                            className="relative z-10"
+                        >
+                            <p className="text-primary font-mono text-xs mb-4 uppercase tracking-[0.4em]">Tour & PR Management</p>
+                            <h1 className="text-6xl md:text-[10rem] font-black uppercase leading-[0.8] mb-12">
+                                Денис<br />
+                                <span className="text-transparent" style={{ WebkitTextStroke: '1px #f5f5f5' }}>Волошин</span>
+                            </h1>
+                            
+                            <div className="flex gap-12 border-t border-border pt-8 max-w-xl">
+                                <div>
+                                    <div className="text-4xl font-bold">36+</div>
+                                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Городов в турах</div>
+                                </div>
+                                <div>
+                                    <div className="text-4xl font-bold">14</div>
+                                    <div className="text-[10px] text-muted-foreground uppercase tracking-widest mt-1">Лет проф. футбола</div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </section>
+
+                    {/* MARQUEE */}
+                    <div className="py-12 border-y border-border overflow-hidden bg-white/5">
+                        <div className="flex whitespace-nowrap animate-marquee">
+                            {[...ARTISTS, ...ARTISTS].map((artist, i) => (
+                                <span key={i} className="text-4xl md:text-6xl font-black mx-12 opacity-20 uppercase">{artist}</span>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* EXPERIENCE (КРАТКО) */}
+                    <section className="py-32 px-6 md:px-12">
+                        <h2 className="font-mono text-xs text-primary mb-16 uppercase tracking-[0.3em]// Опыт</h2>
+                        <div className="space-y-12">
+                            <div className="grid md:grid-cols-4 gap-4 border-t border-border pt-12">
+                                <div className="font-mono text-xs opacity-50">2024 — 2025</div>
+                                <div className="md:col-span-3">
+                                    <h3 className="text-3xl font-bold mb-4 uppercase">SOLDOUT</h3>
+                                    <p className="text-foreground/60 text-sm leading-relaxed max-w-2xl">
+                                        Управление гастрольными турами артистов первого эшелона. 
+                                        Логистика, технические райдеры и бюджеты в 36+ городах России.
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="grid md:grid-cols-4 gap-4 border-t border-border pt-12">
+                                <div className="font-mono text-xs opacity-50">2024</div>
+                                <div className="md:col-span-3">
+                                    <h3 className="text-3xl font-bold mb-4 uppercase">MTS LIVE</h3>
+                                    <p className="text-foreground/60 text-sm leading-relaxed max-w-2xl">
+                                        Координация масштабных шоу-программ и федеральных мероприятий. 
+                                        Работа с ключевыми подрядчиками индустрии.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* FOOTER */}
+                    <footer className="py-32 px-6 md:px-12 border-t border-border text-center">
+                        <h2 className="text-4xl md:text-8xl font-black uppercase mb-12">
+                            Давайте <span className="text-primary italic">шуметь</span>
+                        </h2>
+                        <div className="flex flex-wrap justify-center gap-8 font-mono text-xs tracking-widest uppercase">
+                            <a href="https://t.me/disvolo" className="hover:text-primary">Telegram</a>
+                            <a href="https://vk.com/disvolo" className="hover:text-primary">VKontakte</a>
+                            <a href="mailto:disvolo@bk.ru" className="hover:text-primary">Email</a>
+                        </div>
+                        <div className="mt-32 opacity-20 font-mono text-[10px]">© 2026 DENIS VOLOSHIN</div>
+                    </footer>
                 </div>
             );
         }
 
+        // Рендеринг
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
