@@ -23,13 +23,13 @@
 </head>
 <body>
 
-    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/10">
-        <div class="font-mono text-lg tracking-[0.3em] uppercase font-black">Денис Волошин</div>
-        <div class="hidden md:flex gap-10 font-mono text-[10px] uppercase tracking-widest text-gray-400">
+    <nav class="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/40 backdrop-blur-md border-b border-white/10">
+        <div class="font-mono text-lg tracking-[0.3em] uppercase font-black text-white">Денис Волошин</div>
+        <div class="hidden md:flex gap-10 font-mono text-[10px] uppercase tracking-widest text-white">
             <a href="#skills" class="hover:text-orange-500 transition-colors">Навыки</a>
             <a href="#experience" class="hover:text-orange-500 transition-colors">Опыт</a>
             <a href="#education" class="hover:text-orange-500 transition-colors">База</a>
-            <a href="https://t.me/disvolo" class="text-orange-500 font-bold hover:text-white transition-colors">TG</a>
+            <a href="https://t.me/disvolo" class="bg-white text-black px-4 py-1 font-bold hover:bg-orange-500 transition-all rounded-sm">TG</a>
         </div>
     </nav>
 
@@ -37,10 +37,9 @@
         <div class="absolute inset-0 z-0">
             <img 
                 src="https://media.base44.com/images/public/69d3f72b14a1404fda01934e/4358e7988_Airbrush-IMAGE-ENHANCER-1775521875923-1775521875923.png" 
-                class="absolute left-0 top-0 h-full w-full object-cover object-left md:w-2/3 brightness-110" 
-                style="mask-image: linear-gradient(to right, black 30%, transparent 95%); -webkit-mask-image: linear-gradient(to right, black 30%, transparent 95%);"
+                class="absolute left-0 top-0 h-full w-full object-cover object-left md:w-2/3"
             >
-            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0804] via-transparent to-transparent opacity-80"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#0a0804] via-transparent to-transparent opacity-60"></div>
         </div>
         
         <div class="relative z-10 fade-in">
@@ -52,11 +51,11 @@
             <div class="flex flex-wrap gap-12 border-t border-white/10 pt-10">
                 <div>
                     <div class="text-5xl font-bold italic">100+</div>
-                    <div class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-2 font-mono">Концертов</div>
+                    <div class="text-[10px] text-gray-400 uppercase tracking-[0.2em] mt-2 font-mono">Концертов</div>
                 </div>
                 <div>
                     <div class="text-5xl font-bold italic">36+</div>
-                    <div class="text-[10px] text-gray-500 uppercase tracking-[0.2em] mt-2 font-mono">Городов России</div>
+                    <div class="text-[10px] text-gray-400 uppercase tracking-[0.2em] mt-2 font-mono">Городов России</div>
                 </div>
             </div>
         </div>
@@ -70,10 +69,10 @@
             <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">ЕГОР КРИД</span>
             <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">ПОЛИНА ГАГАРИНА</span>
             <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">SALUKI</span>
+            <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">BASHARTH</span>
             <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">БАСТА</span>
             <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">ЗВЕРИ</span>
             <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">MACAN</span>
-            <span class="text-4xl md:text-6xl mx-12 opacity-20 uppercase tracking-tighter">ЕГОР КРИД</span>
         </div>
     </div>
 
@@ -83,44 +82,54 @@
             <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tight">Навыки</h2>
         </div>
         
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/10 border border-white/10">
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all border-b md:border-b-0">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Планирование</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Декомпозиция проектов, управление ресурсами и жесткий контроль дедлайнов (WBS).</p>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10 font-mono">
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Планирование</h3>
+                <p class="text-[12px] text-gray-400">Декомпозиция проектов (WBS) и жесткий контроль дедлайнов.</p>
             </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Коммуникация</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Синхронизация команд, подрядчиков и стейкхолдеров. Управление ожиданиями.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all text-white">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">PR-Стратегия</h3>
+                <p class="text-[12px] text-gray-400">Построение имиджа и работа над репутацией в медиа-поле.</p>
             </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Crisis Management</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Работа в условиях неопределенности и быстрое решение форс-мажоров.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Тех. Продакшн</h3>
+                <p class="text-[12px] text-gray-400">Контроль технического райдера, работа со звуком и светом.</p>
             </div>
-            
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all border-t border-white/10">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">PR-Стратегия</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Построение имиджа артистов/брендов и работа над репутацией в медиа-поле.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Коммуникация</h3>
+                <p class="text-[12px] text-gray-400">Синхронизация команд, подрядчиков и стейкхолдеров.</p>
             </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all border-t border-white/10">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Media Relations</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Связи со СМИ, подготовка пресс-материалов, организация интервью и релизов.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Media Relations</h3>
+                <p class="text-[12px] text-gray-400">Связи со СМИ, пресс-материалы и организация интервью.</p>
             </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all border-t border-white/10">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Логистика туров</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Организация перемещений и проживания для групп 50+ человек в турах по РФ.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Логистика</h3>
+                <p class="text-[12px] text-gray-400">Организация перемещений и проживания групп 50+ человек.</p>
             </div>
-            
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all border-t border-white/10">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Тех. Продакшн</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Контроль технического райдера, работа со звуковым и световым оборудованием.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Crisis Mgmt</h3>
+                <p class="text-[12px] text-gray-400">Быстрое решение форс-мажоров в режиме реального времени.</p>
             </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all border-t border-white/10">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Бюджетирование</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">Управление P&L проекта, оптимизация затрат и финансовая отчетность.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Бюджетирование</h3>
+                <p class="text-[12px] text-gray-400">Управление P&L проекта, оптимизация затрат и отчетность.</p>
             </div>
-            <div class="bg-[#0a0804] p-10 hover:bg-white/5 transition-all border-t border-white/10">
-                <h3 class="font-bold text-lg mb-4 text-orange-500 uppercase tracking-wider">Event PR</h3>
-                <p class="text-sm text-gray-400 leading-relaxed font-mono">PR-сопровождение концертов, релизов и крупных медийных событий.</p>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Event PR</h3>
+                <p class="text-[12px] text-gray-400">PR-сопровождение концертов и крупных медийных событий.</p>
+            </div>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Методологии</h3>
+                <p class="text-[12px] text-gray-400">Scrum, Kanban, OKR для управления творческими процессами.</p>
+            </div>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Аналитика</h3>
+                <p class="text-[12px] text-gray-400">Мониторинг эффективности PR-кампаний и охватов.</p>
+            </div>
+            <div class="bg-[#0a0804] p-8 hover:bg-white/5 transition-all">
+                <h3 class="font-bold text-orange-500 mb-2 uppercase text-sm">Team Lead</h3>
+                <p class="text-[12px] text-gray-400">Управление департаментами и мотивация персонала.</p>
             </div>
         </div>
 
@@ -129,8 +138,10 @@
             <span class="px-4 py-2 border border-white/10 text-gray-500">Jira</span>
             <span class="px-4 py-2 border border-white/10 text-gray-500">Notion</span>
             <span class="px-4 py-2 border border-white/10 text-gray-500">Asana</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">Scrum / Kanban</span>
-            <span class="px-4 py-2 border border-white/10 text-gray-500">P&L Management</span>
+            <span class="px-4 py-2 border border-white/10 text-gray-500">Trello</span>
+            <span class="px-4 py-2 border border-white/10 text-gray-500">Figma</span>
+            <span class="px-4 py-2 border border-white/10 text-gray-500">Slack</span>
+            <span class="px-4 py-2 border border-white/10 text-gray-500">ChatGPT / AI</span>
         </div>
     </section>
 
@@ -146,9 +157,9 @@
                 <div class="md:col-span-3">
                     <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">SOLDOUT</h3>
                     <ul class="space-y-4 text-gray-400 font-mono text-sm leading-relaxed">
-                        <li>/ Управление гастрольными турами артистов первого эшелона (36+ городов).</li>
-                        <li>/ Координация туровой команды и локальных промоутеров.</li>
-                        <li>/ Ведение финансовой документации и контроль исполнения смет.</li>
+                        <li>/ Управление турами артистов первого эшелона (36+ городов).</li>
+                        <li>/ Координация команды сопровождения и локальных промоутеров.</li>
+                        <li>/ Контроль исполнения смет и финальные отчеты.</li>
                     </ul>
                 </div>
             </div>
@@ -159,8 +170,7 @@
                     <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">MTS LIVE</h3>
                     <ul class="space-y-4 text-gray-400 font-mono text-sm leading-relaxed">
                         <li>/ Координация крупных концертных и корпоративных ивентов.</li>
-                        <li>/ Контроль застройки сцены и технического продакшна.</li>
-                        <li>/ Операционное управление event-командой.</li>
+                        <li>/ Работа с тех. подрядчиками и контроль застройки площадок.</li>
                     </ul>
                 </div>
             </div>
@@ -170,9 +180,8 @@
                 <div class="md:col-span-3">
                     <h3 class="text-3xl md:text-5xl font-black mb-8 uppercase group-hover:text-orange-500 transition-colors">NEBO RECORDS</h3>
                     <ul class="space-y-4 text-gray-400 font-mono text-sm leading-relaxed">
-                        <li>/ Организация выступлений артистов лейбла (Баста, Zivert и др).</li>
-                        <li>/ Контроль VIP-логистики, чартеров и бытовых условий команды.</li>
-                        <li>/ Сопровождение артистов на медиа-площадках и съемках.</li>
+                        <li>/ Организация выступлений артистов (Баста, Zivert и др).</li>
+                        <li>/ VIP-логистика, чартеры и медиа-сопровождение.</li>
                     </ul>
                 </div>
             </div>
@@ -187,14 +196,14 @@
         <div class="space-y-12">
             <div class="flex flex-col md:flex-row gap-6 justify-between border-b border-white/10 pb-10">
                 <div>
-                    <h3 class="text-2xl font-bold uppercase">РЭУ Плеханова</h3>
+                    <h3 class="text-2xl font-bold uppercase text-white">РЭУ Плеханова</h3>
                     <p class="text-gray-500 font-mono text-sm mt-1">Гостиничное дело / 2017 — 2021</p>
                 </div>
                 <span class="text-orange-500 font-mono text-xs uppercase border border-orange-500/30 px-4 py-2 h-fit">Высшее</span>
             </div>
             <div class="flex flex-col md:flex-row gap-6 justify-between border-b border-white/10 pb-10">
                 <div>
-                    <h3 class="text-2xl font-bold uppercase">Военная служба</h3>
+                    <h3 class="text-2xl font-bold uppercase text-white">Военная служба</h3>
                     <p class="text-gray-500 font-mono text-sm mt-1">Медаль за парад 2022 / 2021 — 2022</p>
                 </div>
                 <span class="bg-orange-500 text-black font-mono text-[10px] font-bold uppercase px-4 py-2 h-fit">Награда</span>
@@ -202,12 +211,12 @@
         </div>
     </section>
 
-    <footer id="contact" class="py-40 px-6 md:px-20 border-t border-white/10 text-center bg-background relative z-20">
+    <footer id="contact" class="py-40 px-6 md:px-20 border-t border-white/10 text-center bg-background">
         <h2 class="text-6xl md:text-[9rem] font-black uppercase mb-16 leading-none">Давайте <span class="text-orange-500 italic">шуметь</span></h2>
         <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto font-mono text-xs tracking-widest uppercase">
-            <a href="https://t.me/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all">Telegram</a>
-            <a href="https://vk.com/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all">VKontakte</a>
-            <a href="mailto:disvolo@bk.ru" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 transition-all col-span-2 md:col-span-1">Email</a>
+            <a href="https://t.me/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 hover:text-white transition-all text-white">Telegram</a>
+            <a href="https://vk.com/disvolo" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 hover:text-white transition-all text-white">VKontakte</a>
+            <a href="mailto:disvolo@bk.ru" class="bg-white/5 p-8 border border-white/10 hover:border-orange-500 hover:text-white transition-all text-white col-span-2 md:col-span-1">Email</a>
         </div>
         <div class="mt-40 opacity-20 font-mono text-[10px] uppercase">© 2026 DENIS VOLOSHIN — Based in Moscow</div>
     </footer>
