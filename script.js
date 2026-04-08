@@ -1,20 +1,28 @@
-const { useState } = React;
-const { motion } = FramerMotion;
+const { useState, useEffect } = React;
+const { motion, AnimatePresence } = FramerMotion;
 
 const GooeyNav = ({ items }) => {
     const [activeIndex, setActiveIndex] = useState(0);
 
     return (
         <div className="relative flex items-center bg-white/5 rounded-full p-1 border border-white/10 gooey-container">
+            {/* Анимированный оранжевый фон (пузырь) */}
             <motion.div 
                 className="absolute bg-orange-500 rounded-full h-[80%] z-0"
                 layoutId="gooey-pill"
-                transition={{ type: "spring", stiffness: 160, damping: 20 }}
+                transition={{ 
+                    type: "spring", 
+                    stiffness: 160, 
+                    damping: 22,
+                    mass: 1 
+                }}
                 style={{
                     width: `calc(100% / ${items.length} - 8px)`,
                     left: `calc(${activeIndex} * (100% / ${items.length}) + 4px)`
                 }}
             />
+            
+            {/* Пункты меню */}
             {items.map((item, i) => (
                 <a
                     key={i}
@@ -41,10 +49,16 @@ const Navigation = () => {
 
     return (
         <nav className="fixed top-0 w-full z-50 p-6 flex justify-between items-center bg-black/60 backdrop-blur-xl border-b border-white/10">
-            <div className="font-mono text-lg tracking-[0.3em] uppercase font-black text-white">Денис Волошин</div>
+            <div className="font-mono text-sm md:text-lg tracking-[0.3em] uppercase font-black text-white">
+                Денис Волошин
+            </div>
+            
+            {/* Gooey Menu для десктопа и планшетов */}
             <div className="hidden md:block">
                 <GooeyNav items={menuItems} />
             </div>
+
+            {/* TG кнопка для мобилок */}
             <div className="md:hidden">
                 <a href="https://t.me/disvolo" className="bg-white text-black px-4 py-1.5 font-bold rounded-sm text-[10px] uppercase font-mono">TG</a>
             </div>
@@ -52,5 +66,6 @@ const Navigation = () => {
     );
 };
 
+// Запуск рендера
 const root = ReactDOM.createRoot(document.getElementById('nav-root'));
 root.render(<Navigation />);
